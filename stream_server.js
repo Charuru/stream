@@ -43,6 +43,8 @@ Meteor._StreamServer = function () {
     });
     self.open_sockets.push(socket);
 
+    socket.ty = {}
+
 
     // Send a welcome message with the server_id. Client uses this to
     // reload if needed.
@@ -72,12 +74,6 @@ _.extend(Meteor._StreamServer.prototype, {
   all_sockets: function () {
     var self = this;
     return _.values(self.open_sockets);
-  },
-
-  // get a list of all sockets
-  all_sockets2: function () {
-    var self = this;
-    return self.open_sockets
   },
 
   // Redirect /websocket to /sockjs/websocket in order to not expose
